@@ -1,28 +1,59 @@
 // Get all cards
 const cards = document.querySelectorAll(".card")
 
-// Add click event to each card
 cards.forEach((card) => {
   const cardFront = card.querySelector(".card-front")
   const closeBtn = card.querySelector(".close-btn")
 
-  // Flip card when clicking on front
-  cardFront.addEventListener("click", (e) => {
+  // Track if this is a touch device
+  let isTouchDevice = false
+
+  // Handle both touch and click events
+  const flipCard = (e) => {
+    e.preventDefault()
     e.stopPropagation()
+
     // Close all other cards first
     cards.forEach((otherCard) => {
       if (otherCard !== card) {
         otherCard.classList.remove("flipped")
       }
     })
+
     // Flip this card
     card.classList.add("flipped")
-  })
+  }
 
-  // Close card when clicking close button
-  closeBtn.addEventListener("click", (e) => {
+  const closeCard = (e) => {
+    e.preventDefault()
     e.stopPropagation()
     card.classList.remove("flipped")
+  }
+
+  // Touch events for mobile
+  cardFront.addEventListener(
+    "touchstart",
+    (e) => {
+      isTouchDevice = true
+    },
+    { passive: false },
+  )
+
+  cardFront.addEventListener("touchend", flipCard, { passive: false })
+
+  // Click events for desktop
+  cardFront.addEventListener("click", (e) => {
+    if (!isTouchDevice) {
+      flipCard(e)
+    }
+  })
+
+  // Close button events
+  closeBtn.addEventListener("touchend", closeCard, { passive: false })
+  closeBtn.addEventListener("click", (e) => {
+    if (!isTouchDevice) {
+      closeCard(e)
+    }
   })
 })
 
