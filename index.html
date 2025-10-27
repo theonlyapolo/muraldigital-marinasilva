@@ -1,219 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mural Digital — Marina Silva (Meio Ambiente)</title>
-  <style>
-    :root{
-      --green-1:#0b6b3a;
-      --green-2:#148a43;
-      --green-3:#a7e6b8;
-      --accent:#ffeaa7;
-      --glass: rgba(255,255,255,0.06);
-      --card: rgba(255,255,255,0.06);
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; min-height:100vh;
-      background: linear-gradient(180deg,var(--green-1), #0e8a4a 60%);
-      color:#04260f;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;flex-direction:column;align-items:center;padding:20px;
-    }
-    header{
-      width:100%;max-width:1100px;display:flex;align-items:center;gap:16px;margin-bottom:18px;
-    }
-    .logo{
-      width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,var(--green-3),var(--green-2));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.2);
-    }
-    .logo h1{font-size:20px;margin:0;color:var(--green-1);}
-    .title{color:#fff}
-    .title h2{margin:0;font-size:20px}
-    .title p{margin:2px 0 0 0;opacity:0.95}
-
-    main{width:100%;max-width:1100px;background:rgba(255,255,255,0.02);border-radius:14px;padding:20px;backdrop-filter: blur(6px);box-shadow:0 10px 30px rgba(2,20,10,0.3)}
-
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
-    .card{background:var(--card);border-radius:12px;padding:14px}
-
-    /* interactive hero */
-    .hero{display:flex;gap:14px;align-items:center}
-    .hero-left{flex:1}
-    .hero-right{width:260px}
-    .portrait{width:100%;height:100%;max-width:240px;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.25)}
-    .portrait img{display:block;width:100%;height:100%;object-fit:cover}
-
-    h3{margin:6px 0}
-    p.small{font-size:14px;line-height:1.5;color:rgba(255,255,255,0.95)}
-
-    /* touch cards */
-    .touch-row{display:flex;gap:10px;margin-top:12px}
-    .touch{flex:1;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));padding:12px;border-radius:10px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;touch-action:manipulation}
-    .touch button{appearance:none;border:0;padding:8px 12px;border-radius:8px;background:var(--green-2);color:white;font-weight:600}
-
-    /* collapsible content */
-    .collapsible{overflow:hidden;max-height:0;transition:max-height .34s cubic-bezier(.2,.8,.2,1);}
-    .collapsible.open{max-height:1200px}
-
-    /* facts list */
-    .facts li{margin:10px 0;padding:10px;background:rgba(255,255,255,0.02);border-radius:8px}
-
-    /* gallery */
-    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
-
-    footer{margin-top:14px;color:rgba(255,255,255,0.9);font-size:13px;text-align:center}
-
-    /* responsive */
-    @media (max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .hero-right{width:100%}
-      .gallery img{height:100px}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marina Silva - Mural Digital Interativo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="logo" aria-hidden>
-      <h1>🌿</h1>
-    </div>
-    <div class="title">
-      <h2>Mural: Marina Silva</h2>
-      <p>Ministra do Meio Ambiente e Mudança do Clima — tema: meio ambiente</p>
-    </div>
-  </header>
+    <div class="background-animation"></div>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">Marina Silva</h1>
+            <p class="subtitle">Ministra do Meio Ambiente e Mudança do Clima</p>
+            <div class="leaf-decoration">🌿</div>
+        </div>
+    </header>
 
-  <main role="main">
-    <div class="grid">
-      <!-- left: conteúdo principal -->
-      <section class="card">
-        <div class="hero">
-          <div class="hero-left">
-            <h3>Resumão — Quem é Marina Silva</h3>
-            <p class="small">Marina Silva, nome completo Maria Osmarina Silva de Souza, nasceu no Acre em uma comunidade seringueira na Amazônia. Foi alfabetizada aos 16 anos, trabalhou como seringueira, tornou-se professora, ativista ao lado de Chico Mendes, deputada, senadora e Ministra do Meio Ambiente (2003–2008; 2023–presente). É referência mundial em defesa ambiental.</p>
-
-            <div class="touch-row" aria-label="Ações interativas">
-              <div class="touch" role="group" aria-labelledby="btn-bio">
-                <strong id="btn-bio">Biografia</strong>
-                <p class="small">Toque para abrir a biografia completa e curiosidades.</p>
-                <button data-target="#bio">Abrir</button>
-              </div>
-              <div class="touch" role="group" aria-labelledby="btn-actions">
-                <strong id="btn-actions">Ações Recentes</strong>
-                <p class="small">Redução do desmatamento, planos por bioma, combate a incêndios, compromissos climáticos.</p>
-                <button data-target="#actions">Ver ações</button>
-              </div>
-            </div>
-
-            <div id="bio" class="collapsible" aria-hidden="true" style="margin-top:12px">
-              <h4>Biografia (detalhada)</h4>
-              <p class="small">Formada em História pela UFAC; também cursou Psicopedagogia e Teoria Psicanalítica. Atuou como professora e como ativista ambiental ao lado de Chico Mendes. Foi vereadora de Rio Branco, deputada estadual, senadora da República, e candidata à Presidência (2010, 2014, 2018). Além disso, é escritora e palestrante.</p>
-            </div>
-
-            <div id="actions" class="collapsible" aria-hidden="true" style="margin-top:12px">
-              <h4>Principais ações recentes</h4>
-              <ul class="facts">
-                <li><strong>Redução do desmatamento:</strong> Queda de 49,8% na Amazônia em 2023 vs período anterior; nova redução de 40,5% entre jan–mai/2024; Cerrado: queda de 12,9% nos primeiros cinco meses de 2024.</li>
-                <li><strong>Planos por biomas:</strong> Reativação de planos para Amazônia, Cerrado, Caatinga, Pantanal, Pampa e Mata Atlântica; propostas de recuperação e fundos.</li>
-                <li><strong>Prevenção e combate a incêndios:</strong> Mais fiscalização, equipamentos, monitoramento e brigadistas; redução de 77% nas áreas de garimpo ilegal na TI Yanomami em 2023.</li>
-                <li><strong>Compromissos climáticos:</strong> Atualização das NDCs; metas ambiciosas até 2030 e 2050; cooperação internacional e organização da COP-30 em Belém.</li>
-                <li><strong>Fortalecimento institucional:</strong> Defesa do Ibama e ICMBio e proteção contra retrocessos legais.</li>
-              </ul>
-            </div>
-
-          </div>
-
-          <aside class="hero-right">
-            <div class="portrait">
-              <!-- imagem de exemplo; substitua se quiser -->
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=1d6b8eab5d6a1d8abf9b" alt="Marina Silva - ilustração">
-            </div>
-
-            <div style="margin-top:12px;display:flex;gap:8px;flex-direction:column">
-              <div style="background:linear-gradient(90deg,var(--green-2),var(--green-1));padding:8px;border-radius:8px;color:#fff;display:flex;justify-content:space-between;align-items:center">
-                <strong>Cargo atual</strong><span>Ministra do Meio Ambiente e Mudança do Clima</span>
-              </div>
-
-              <div style="background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;color:#fff;margin-top:8px">
-                <small style="opacity:0.95">Toque em "Ver ações" para ver realizações recentes.</small>
-              </div>
-            </div>
-          </aside>
+    <main class="container">
+        <div class="intro-section">
+            <p class="intro-text">
+                Conheça a trajetória inspiradora de uma das maiores defensoras do meio ambiente no Brasil e no mundo. 
+                <strong>Toque nas seções abaixo para explorar!</strong>
+            </p>
         </div>
 
-        <!-- galeria -->
-        <section style="margin-top:16px">
-          <h4>Imagens ilustrativas</h4>
-          <div class="gallery" role="list">
-            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&s=4a6e5a5f7f" alt="Floresta amazônica" tabindex="0">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop&s=2d5f9b4e3f" alt="Brigadista no combate a incêndio" tabindex="0">
-            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop&s=ec5c3b8f1a" alt="Comunidade tradicional" tabindex="0">
-            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop&s=7f8a3d6b" alt="Biodiversidade brasileira" tabindex="0">
-          </div>
-        </section>
+        <div class="mural-grid">
+            <!-- Card 1: Quem é Marina Silva -->
+            <div class="card" data-card="1">
+                <div class="card-front">
+                    <div class="card-icon">🌱</div>
+                    <h2>Quem é Marina Silva</h2>
+                    <p class="card-preview">Da floresta amazônica para a política nacional...</p>
+                    <span class="tap-hint">Toque para saber mais</span>
+                </div>
+                <div class="card-back">
+                    <button class="close-btn">✕</button>
+                    <h3>Quem é Marina Silva</h3>
+                    <div class="card-content">
+                        <p>Marina Silva, cujo nome completo é <strong>Maria Osmarina Silva de Souza</strong>, nasceu no estado do Acre, em uma comunidade seringueira localizada na floresta amazônica.</p>
+                        <p>Teve uma infância simples, trabalhou desde cedo como seringueira, coletando látex com sua família, e foi alfabetizada apenas aos 16 anos.</p>
+                        <p>Formou-se em <strong>História pela UFAC</strong> e também cursou Psicopedagogia e Teoria Psicanalítica. Trabalhou como professora e ativista ambiental ao lado de <strong>Chico Mendes</strong>.</p>
+                        <p>Foi vereadora, deputada estadual, senadora e Ministra do Meio Ambiente (2003-2008 e 2023-presente). Candidata à Presidência em 2010, 2014 e 2018.</p>
+                    </div>
+                </div>
+            </div>
 
-      </section>
+            <!-- Card 2: Cargo Atual -->
+            <div class="card" data-card="2">
+                <div class="card-front">
+                    <div class="card-icon">🏛️</div>
+                    <h2>Cargo Atual</h2>
+                    <p class="card-preview">Liderando a agenda ambiental do Brasil...</p>
+                    <span class="tap-hint">Toque para saber mais</span>
+                </div>
+                <div class="card-back">
+                    <button class="close-btn">✕</button>
+                    <h3>Ministra do Meio Ambiente e Mudança do Clima</h3>
+                    <div class="card-content">
+                        <p>Em janeiro de 2023, Marina Silva foi nomeada <strong>Ministra do Meio Ambiente e Mudança do Clima</strong> no governo de Luiz Inácio Lula da Silva.</p>
+                        <p><strong>Responsabilidades do Ministério:</strong></p>
+                        <ul>
+                            <li>Formular políticas de preservação ambiental</li>
+                            <li>Conservação da biodiversidade</li>
+                            <li>Combate ao desmatamento</li>
+                            <li>Licenciamento ambiental</li>
+                            <li>Enfrentamento das mudanças climáticas</li>
+                            <li>Compromissos internacionais</li>
+                            <li>Transição energética</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-      <!-- right: resumo, propostas e desafios -->
-      <aside>
-        <div class="card" style="margin-bottom:12px">
-          <h4>Funções & projetos</h4>
-          <p class="small">Implementação de políticas climáticas, transição energética, economia verde e bioeconomia, fortalecimento institucional, proteção às populações tradicionais.</p>
+            <!-- Card 3: Principais Ações -->
+            <div class="card" data-card="3">
+                <div class="card-front">
+                    <div class="card-icon">📊</div>
+                    <h2>Principais Ações</h2>
+                    <p class="card-preview">Resultados concretos na proteção ambiental...</p>
+                    <span class="tap-hint">Toque para saber mais</span>
+                </div>
+                <div class="card-back">
+                    <button class="close-btn">✕</button>
+                    <h3>Principais Ações Realizadas</h3>
+                    <div class="card-content">
+                        <div class="achievement">
+                            <h4>🌳 Redução do Desmatamento</h4>
+                            <p><strong>Amazônia:</strong> Queda de 49,8% em 2023 e 40,5% em 2024</p>
+                            <p><strong>Cerrado:</strong> Redução de 12,9% nos primeiros meses de 2024</p>
+                        </div>
+                        <div class="achievement">
+                            <h4>🔥 Combate a Incêndios</h4>
+                            <p>Aumento da fiscalização, equipamentos e brigadistas</p>
+                        </div>
+                        <div class="achievement">
+                            <h4>⛏️ Garimpo Ilegal</h4>
+                            <p>Redução de 77% na Terra Indígena Yanomami</p>
+                        </div>
+                        <div class="achievement">
+                            <h4>🌍 Compromissos Climáticos</h4>
+                            <p>Meta de emissões líquidas zero até 2050</p>
+                            <p>Organização da COP-30 em Belém (PA)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Propostas e Projetos -->
+            <div class="card" data-card="4">
+                <div class="card-front">
+                    <div class="card-icon">🎯</div>
+                    <h2>Propostas e Projetos</h2>
+                    <p class="card-preview">O futuro sustentável que está sendo construído...</p>
+                    <span class="tap-hint">Toque para saber mais</span>
+                </div>
+                <div class="card-back">
+                    <button class="close-btn">✕</button>
+                    <h3>Funções, Propostas e Projetos</h3>
+                    <div class="card-content">
+                        <ul>
+                            <li><strong>Políticas Climáticas:</strong> Implementação com monitoramento constante e metas claras</li>
+                            <li><strong>Transição Energética:</strong> Redução de combustíveis fósseis e incentivo a energias renováveis</li>
+                            <li><strong>Economia Verde:</strong> Bioeconomia, agricultura de baixo carbono e economia circular</li>
+                            <li><strong>Fortalecimento Institucional:</strong> Mais recursos para Ibama e ICMBio</li>
+                            <li><strong>Populações Tradicionais:</strong> Proteção dos direitos de povos indígenas, ribeirinhos e extrativistas</li>
+                            <li><strong>Desmatamento Zero:</strong> Meta para 2030 em alguns biomas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Poder Político -->
+            <div class="card" data-card="5">
+                <div class="card-front">
+                    <div class="card-icon">💪</div>
+                    <h2>Poder Político</h2>
+                    <p class="card-preview">Uma mulher que inspira gerações...</p>
+                    <span class="tap-hint">Toque para saber mais</span>
+                </div>
+                <div class="card-back">
+                    <button class="close-btn">✕</button>
+                    <h3>Poder Político como Mulher</h3>
+                    <div class="card-content">
+                        <p>Marina Silva representa uma das figuras mais inspiradoras da política brasileira.</p>
+                        <p><strong>Símbolo de resistência:</strong> Mulher, negra, amazônica e de origem humilde, transformou sua história em luta e liderança.</p>
+                        <p><strong>Reconhecimento internacional:</strong> Uma das vozes mais respeitadas nas negociações climáticas globais.</p>
+                        <p><strong>Influência real:</strong> Seu poder está na influência sobre a agenda pública, no Brasil e no mundo, participando de tratados internacionais e mobilizando apoio global.</p>
+                        <p>É uma das mulheres mais influentes da história política brasileira e uma das maiores defensoras do meio ambiente no mundo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Desafios -->
+            <div class="card" data-card="6">
+                <div class="card-front">
+                    <div class="card-icon">⚡</div>
+                    <h2>Desafios</h2>
+                    <p class="card-preview">Os obstáculos que ainda precisam ser superados...</p>
+                    <span class="tap-hint">Toque para saber mais</span>
+                </div>
+                <div class="card-back">
+                    <button class="close-btn">✕</button>
+                    <h3>Principais Desafios</h3>
+                    <div class="card-content">
+                        <ul>
+                            <li>Ampliar e manter a queda do desmatamento nos principais biomas</li>
+                            <li>Enfrentar resistências políticas de setores que defendem menos regulação ambiental</li>
+                            <li>Garantir orçamento e estrutura adequada para órgãos ambientais</li>
+                            <li>Enfrentar os efeitos das mudanças climáticas extremas (secas e queimadas)</li>
+                            <li>Defender os direitos territoriais das comunidades tradicionais e indígenas</li>
+                            <li>Manter o equilíbrio entre crescimento econômico e preservação ambiental</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-          <h4>Poder político e liderança</h4>
-          <p class="small">Marina simboliza superação — mulher, amazônica, líder ambiental e referência internacional. Exerce influência em acordos e na agenda climática.</p>
-          <hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:12px 0">
-          <h5>Desafios</h5>
-          <ul class="facts">
-            <li>Manter queda do desmatamento</li>
-            <li>Enfrentar resistências políticas</li>
-            <li>Garantir orçamento para órgãos ambientais</li>
-            <li>Proteger direitos indígenas e tradicionais</li>
-          </ul>
-        </div>
-      </aside>
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-quote">
+                    🌿 <em>"Uma mulher que transformou sua origem simples em uma trajetória de luta, coragem e liderança."</em> 🌿
+                </p>
+                <p class="footer-text">
+                    Marina Silva trabalha com firmeza por um futuro mais sustentável, justo e equilibrado para o Brasil e o planeta.
+                </p>
+            </div>
+        </footer>
+    </main>
 
-    </div>
-
-    <footer>
-      <small>Toque (ou clique) nos blocos "Biografia" e "Ações Recentes" para abrir/fechar conteúdos — projetado para interação touch.</small>
-    </footer>
-  </main>
-
-  <script>
-    // Interatividade touch-friendly: abre/fecha seções
-    document.querySelectorAll('.touch button').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const target = document.querySelector(btn.getAttribute('data-target'));
-        if(!target) return;
-        const isOpen = target.classList.contains('open');
-        document.querySelectorAll('.collapsible').forEach(c=>{ c.classList.remove('open'); c.setAttribute('aria-hidden','true'); });
-        if(!isOpen){ target.classList.add('open'); target.setAttribute('aria-hidden','false'); target.scrollIntoView({behavior:'smooth',block:'center'}); }
-      });
-    });
-
-    // Allow tapping images to open in a simple modal (lightbox)
-    function createLightbox(){
-      const lb = document.createElement('div'); lb.style.position='fixed'; lb.style.inset=0; lb.style.display='none'; lb.style.alignItems='center'; lb.style.justifyContent='center'; lb.style.background='rgba(2,20,8,0.8)'; lb.style.zIndex=9999; lb.addEventListener('click',()=> lb.style.display='none');
-      const img = document.createElement('img'); img.style.maxWidth='90%'; img.style.maxHeight='90%'; img.style.borderRadius='10px'; lb.appendChild(img); document.body.appendChild(lb); return {el:lb,img};
-    }
-    const light = createLightbox();
-    document.querySelectorAll('.gallery img, .portrait img').forEach(im=>{
-      im.style.cursor='zoom-in'; im.addEventListener('click', e=>{ light.img.src = im.src; light.el.style.display='flex'; });
-    });
-
-    // Keyboard accessibility: Escape fecha lightbox e seções
-    document.addEventListener('keydown', e=>{
-      if(e.key==='Escape'){
-        document.querySelectorAll('.collapsible').forEach(c=>{ c.classList.remove('open'); c.setAttribute('aria-hidden','true'); });
-        document.querySelectorAll('div[style*="position: fixed"]').forEach(d=> d.style.display='none');
-      }
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
