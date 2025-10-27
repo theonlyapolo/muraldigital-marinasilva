@@ -102,6 +102,51 @@ body {
   z-index: 1;
 }
 
+/* Added photo section styles */
+.photo-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.photo-container {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(139, 195, 74, 0.5);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.photo-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+.marina-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.photo-caption h3 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.photo-caption p {
+  font-size: 1.1rem;
+  color: #c8e6c9;
+}
+
 /* Intro Section */
 .intro-section {
   text-align: center;
@@ -357,14 +402,54 @@ body {
   margin: 0 auto;
 }
 
+/* Added version info styles */
+.version-info {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #8bc34a;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 3rem 1rem 2rem;
+  }
+
   .main-title {
     font-size: 2.5rem;
+    letter-spacing: 1px;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .leaf-decoration {
+    font-size: 2rem;
+  }
+
+  .photo-container {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .photo-caption h3 {
+    font-size: 1.5rem;
+  }
+
+  .photo-caption p {
+    font-size: 1rem;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    padding: 1rem;
   }
 
   .mural-grid {
@@ -376,12 +461,74 @@ body {
     height: 350px;
   }
 
+  .card-front,
+  .card-back {
+    padding: 1.5rem;
+  }
+
+  .card-icon {
+    font-size: 3rem;
+  }
+
   .card-front h2 {
     font-size: 1.5rem;
   }
 
-  .intro-text {
+  .card-preview {
+    font-size: 0.9rem;
+  }
+
+  .tap-hint {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .card-back h3 {
+    font-size: 1.3rem;
+    padding-right: 2.5rem;
+  }
+
+  .card-content {
+    font-size: 0.95rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .footer-quote {
+    font-size: 1.1rem;
+  }
+
+  .footer-text {
     font-size: 1rem;
+  }
+
+  .version-info {
+    font-size: 0.85rem;
+  }
+}
+
+/* Added extra small mobile devices support */
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .card {
+    height: 320px;
+  }
+
+  .card-front h2 {
+    font-size: 1.3rem;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
   }
 }
 
@@ -403,4 +550,3 @@ body {
 .card-back::-webkit-scrollbar-thumb:hover {
   background: rgba(139, 195, 74, 0.7);
 }
-
